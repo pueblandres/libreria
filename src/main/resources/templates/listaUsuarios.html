@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head_1 :: head">  </head>
+
+    <body>
+        <nav th:replace="/fragments/nav :: nav"></nav>
+        <div class="jumbotron">
+            <h1 class="display-4">Lista de Usuarios   
+                <a class="btn btn-primary btn-lg" th:href="@{/inicio}" role="button"> INICIO </a>
+               
+                <hr class="my-4">
+
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ESTADO</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">APELLIDO</th>
+                            <th scope="col">D.N.I.</th>
+                            <th scope="col">MAIL</th>
+                            <th scope="col">TELEFONO</th>
+                            <th scope="col">ROL</th>
+
+                        </tr>
+                    </thead>
+                    <tbody th:each="usuario : ${usuario}">
+                        <tr >
+
+
+                            <td  th:text="${usuario.alta}"></td>
+                            <td  th:text="${usuario.nombre}"></td>
+                            <td  th:text="${usuario.apellido}"></td>
+                            <td  th:text="${usuario.dni}"></td>
+                            <td  th:text="${usuario.mail}"></td> 
+                            <td  th:text="${usuario.telefono}"></td>
+                            <td  th:text="${usuario.rol}"></td> 
+
+
+                        </tr>
+                    </tbody>
+                </table>
+                </body>
+                </html>

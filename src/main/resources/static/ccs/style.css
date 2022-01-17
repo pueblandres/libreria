@@ -1,0 +1,48 @@
+
+body{
+    color:midnightblue;
+    text-align: center;
+    background-image: url(../imagenes/libreria.jpg);
+    background-position: top;
+
+
+}
+h1{
+    font-size: 3cm;
+    font-family: cursive;
+}
+
+#centro{
+    border: 1px #E1E1E1;
+    border-radius:5px ;
+    padding:17px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+}
+
+.img{
+    width: auto;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+}
+.pos{
+    left: -190px;
+    top: 60px;
+}
+.img-centro{
+    width: auto;
+    height: auto;
+    max-width: 50px;
+    max-height: 50px;
+
+}
+.conteinerLogin{
+    width: 350px;
+    height:300px;
+    background-color: #e3f2fd;
+}
+

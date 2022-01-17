@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="/fragments/head_1 :: head">  </head>
+    <body class="container" >
+        <nav th:replace="/fragments/nav :: nav"></nav>
+        <div th:if="${exito}!=null" class="card text-white bg-success mb-3" >
+            <div class="card-body">
+                <h5 class="card-title">¡Bien Hecho!</h5>
+                <p class="card-text" th:text="${exito}" ></p>
+                <a th:href="@{/libros}" class="btn btn-secondary">Ver Lista</a> 
+            </div>
+        </div>
+
+        <div th:if="${error}!=null" class="card text-white bg-danger mb-3" >
+            <div class="card-body">
+                <h5 class="card-title">¡ups!</h5>
+                <p class="card-text" th:text="${error}" ></p>
+            </div>
+        </div>
+        <div >
+            <div class="container">
+                <h1 class="display-4 ">Nuevo Libro   <a class="btn btn-primary btn-lg" th:href="@{/libros}" role="button"> VOLVER </a></h1>
+            </div>
+
+        </div>
+
+
+        <form th:action="@{/libros/nuevolibro}" method="POST"  enctype="multipart/form-data">
+            <div class="form-group col-md-2">
+                <label >ISBN</label>
+                <input th:value="${isbn}" required type="text" class="form-control" id="inputZip" name="isbn" placeholder="isbn del libro">
+
+            </div>
+
+            <div class="form-group col-md-6">
+                <label >Titulo del Libro</label>
+                <input  th:value="${titulo}" required type="text" class="form-control" id="inputPassword4" name="titulo" placeholder="titulo del libro">
+            </div>
+            <div class="form-group col-md-2">
+                <label >AÑO</label>
+                <input th:value="${anio}" type="number" class="form-control" id="inputZip" name="anio" placeholder="anio del libro">
+
+            </div>
+            <div class="form-group col-md-4">
+                <label>Autor</label>
+                <select id="inputState" class="form-control" name="idAutor" >      
+                    <option required th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}">Elige una opcion</option>
+
+                </select>
+                <a  th:href="@{/nuevoAutor}" class="btn btn-secondary btn-sm" role="button">Nuevo Autor</a>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label >Editorial</label>
+                <select id="inputState" class="form-control" name="idEditorial" >      
+                    <option required th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}">Elige una opcion</option>
+
+                </select>
+                <a  th:href="@{/nuevaEditorial}" class="btn btn-secondary btn-sm" role="button" >Nueva Editorial</a>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Cantidad de ejemplares</label>
+                <input th:value="${ejemplares}" required type="number" class="form-control" id="inputZip" name="ejemplares" placeholder="cantidad de ejemplares disponibles">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label >Ejemplares Prestados</label>
+                <input th:value="${ejemplaresPrestados}" required type="number" class="form-control" id="inputZip" name="ejemplaresPrestados" placeholder="Cantidad de ejemplares prestados">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Foto</label>
+                <input required type="file" class="form-control" id="inputZip" name="archivo1"
+                       placeholder="Foto">
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-primary">Agregar Libro</button>
+        </form>
+
+
+
+    </body>
+</html>

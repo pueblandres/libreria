@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head_1 :: head">  </head>
+
+    <body>
+        <nav th:replace="/fragments/nav :: nav"></nav>
+        <div class="jumbotron">
+            <h1 class="display-4">Lista de Prestamos <a class="btn btn-primary btn-lg" th:href="@{/inicio}" role="button"> INICIO </a>  </h1>
+
+
+            <hr class="my-4">
+
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ESTADO</th>
+                    <th scope="col">FECHA PRESTAMO</th>
+                    <th scope="col">FECHA DEVOLUCION</th>
+                    <th scope="col">LIBRO</th>
+                    <th scope="col">USUARIO</th>
+
+
+                </tr>
+            </thead>
+            <tbody th:each="prestamo : ${prestamo}">
+
+                <tr>
+
+                    <td  th:text="${prestamo.alta}"></td>
+                    <td  th:text="${prestamo.fechaprestamo}"></td>
+                    <td  th:text="${prestamo.fechadevolucion}"></td>
+                    <td  th:text="${prestamo.libro}"></td>
+                    <td  th:text="${prestamo.usuario}"></td> 
+
+
+
+
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+    <head th:replace="/fragments/head_1 :: head">  </head>
+    <body class="container" id="nuevoLibro">
+         <nav th:replace="/fragments/nav :: nav"></nav>
+        <div >
+            <div class="container">
+                <h1 class="display-4 ">Modificar Editorial   <a class="btn btn-primary btn-lg" th:href="@{/editoriales}" role="button"> VOLVER </a></h1>
+            </div>
+            
+              <div th:if="${exito}!=null" class="card text-white bg-success mb-3" >
+            <div class="card-body">
+                <h5 class="card-title">¡Bien Hecho!</h5>
+                <p class="card-text" th:text="${exito}" ></p>
+                <a th:href="@{/editoriales}" class="btn btn-secondary">Ver Lista</a> 
+            </div>
+        </div>
+
+        <div th:if="${error}!=null" class="card text-white bg-danger mb-3" >
+            <div class="card-body">
+                <h5 class="card-title">¡ups!</h5>
+                <p class="card-text" th:text="${error}" ></p>
+            </div>
+        </div>
+            
+            <form th:action="@{/editoriales/modificar}" method="POST" >
+                   <input hidden th:value="${id}" name="id">
+                <div class="form-group col-md-6">
+                    <label >Nombre Editorial</label>
+                    <input th:value="${editorial.nombre}"type="text" class="form-control" id="inputPassword4" name="nombre" placeholder="Nombre de editorial">
+                </div>
+
+                <br>
+                <button   type="submit" class="btn btn-primary" >Modificar Editorial</button>
+            </form>
+
+    </body>
+</html>

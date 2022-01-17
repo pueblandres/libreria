@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head_1 :: head">  </head>
+
+    <body>
+        <nav th:replace="/fragments/nav :: nav"></nav>
+        <div class="jumbotron">
+            <h1 class="display-4">Librería <a class="btn btn-primary btn-lg" th:href="@{/autores}" role="button"> VOLVER </a>
+            </h1>
+
+            <p th:text="${autor.nombre}" class="lead"></p>
+            <hr class="my-4">
+
+        </div>
+        <table class="table table-striped">
+            <thead th:if="${usuario1}">
+                <tr>
+                    <th scope="col">TITULO</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">AÑO</th>
+                    <th scope="col">EJEMPLARES</th>
+                    <th scope="col">EJEMPLARES PRESTADOS</th>
+                    <th scope="col">EJEMPLARES RESTANTES</th>
+                </tr>
+            </thead> 
+            <thead th:unless="${usuario1 != null}">
+                <tr>
+                    <th scope="col">TITULO</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">AÑO</th>
+                    <th scope="col">EJEMPLARES</th>
+                   
+                </tr>
+            </thead> 
+            <tbody th:each="libro : ${libros}">
+                <tr>
+
+                    <td th:text="${libro.titulo}"></td>
+                    <td th:text="${libro.isbn}"></td>
+                    <td th:text="${libro.anio}"></td>
+                    <td th:if="${usuario1}" th:text="${libro.ejemplares}"></td>
+                    <td th:if="${usuario1}" th:text="${libro.ejemplaresPrestados}"></td>
+                    <td th:text="${libro.ejemplaresRestantes}"></td>
+
+                    <td th:unless="${usuario1 != null}">
+                        <div>
+                            <form th:action="@{/libros/prestamo}"  method="POST">
+                                <input hidden th:value="${libro.id}" name="idLibro" >
+                                <button type="submit" class="btn btn-primary">Realizar Prestamo</button>
+                            </form>
+                        </div>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </body>
+
+</html>

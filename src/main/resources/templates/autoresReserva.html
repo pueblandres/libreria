@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head_1 :: head">  </head>
+
+
+
+    <body >
+        <nav th:replace="/fragments/nav :: nav"></nav>
+        <div  th:each="autor : ${autor}">
+            <div class="jumbotron">
+                <h1 class="display-4">Autor 
+                </h1>
+                <hr class="my-4">
+                
+                <p th:text="${autor.nombre}" class="lead" style="font-size: 1.5cm"></p><a class="btn btn-primary btn-lg" th:href="@{autores/infoAutor/__${autor.id}__}" role="button"> Ver Libros De Este Autor</a>
+
+            </div>
+        </div>
+    </body>
+
+</html>

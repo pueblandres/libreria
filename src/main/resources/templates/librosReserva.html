@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Libreria </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./ccs/style-nav.css">
+ 
+    </head>
+    <body >
+        <nav th:replace="/fragments/nav :: nav"></nav>
+
+        <div th:each="libro : ${libros}">
+            <div class="jumbotron">
+                 <img   id="fotoLibro" class="img-thumbnail rounded float-right"  th:src="${'/foto/libro/' +libro.id}" >
+                <p style="font-size: 1cm" th:text="${libro.titulo}" class="lead"></p>
+                <div th:if="${libro.ejemplaresRestantes != 0}">
+                    <form th:action="@{/libros/prestamo}"  method="POST">
+                        <input hidden th:value="${libro.id}" name="idLibro" >
+                        <button type="submit" class="btn btn-primary">Realizar Prestamo</button>
+                    </form>
+                </div>
+                <p th:unless="${libro.ejemplaresRestantes != 0}">Este titulo no esta disponible por el momento</p>
+
+                <hr class="my-4">
+
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">AÑO</th>
+                        <th scope="col">AUTOR</th>
+                        <th scope="col">EDITORIAL</th>
+                        <th scope="col">EJEMPLARES DISPONIBLES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+
+                        <td  th:text="${libro.isbn}"></td>
+                        <td  th:text="${libro.anio}"></td>
+                        <td  th:text="${libro.autor}"></td>
+                        <td  th:text="${libro.editorial}"></td>
+                        <td  th:text="${libro.ejemplaresRestantes}"></td> 
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

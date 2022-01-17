@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  
+    
+     <head th:replace="/fragments/head :: head"></head>
+    <body>
+         <nav th:replace="/fragments/nav :: nav"></nav>
+        <div class="jumbotron">
+            <h1 class="display-4">Librería</h1>
+            <p class="lead">Lista de Editoriales </p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" th:href="@{editoriales/nuevaeditorial}" role="button"> Nueva Editorial </a>  <a class="btn btn-primary btn-lg" th:href= "@{/inicio}" role="button">Inicio</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">NOMBRE</th>
+                </tr>
+            </thead>
+            <tbody th:each="editorial : ${editoriales}" >
+                <tr>
+
+                    <td th:text="${editorial.nombre}"
+                        <i th:if="${editorial.alta}"  class="p-3 mb-2 bg-success text-white"></i>
+                    </td>
+                    <td th:text="${editorial.nombre}"
+                        <i th:unless="${editorial.alta}"  class="p-3 mb-2 bg-danger text-white"></i>>  
+
+                    </td>
+                    <th> <a th:href="@{editoriales/infoEditorial/__${editorial.id}__}" class="btn btn-info" role="button">info</a></th>
+                    <th>   <a th:href="@{editoriales/modificar/__${editorial.id}__}" class="btn btn-warning" role="button">editar</a></th>
+                    <th><a th:href= "@{editoriales/alta/__${editorial.id}__}"class="btn btn-success"  role="button">alta</a><a th:href= "@{editoriales/baja/__${editorial.id}__}" class="btn btn-danger"  role="button">Baja</a></th>
+
+
+
+
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>

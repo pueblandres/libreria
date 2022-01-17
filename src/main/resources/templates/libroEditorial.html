@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Libreria</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    </head>
+    <body class="container" id="nuevoLibro">
+        <div >
+            <div class="container">
+                <h1 class="display-4 ">Nueva Editorial   <a class="btn btn-primary btn-lg" th:href="@{/libros/nuevolibro}" role="button"> VOLVER </a></h1>
+            </div>
+            
+              <div th:if="${exito}!=null" class="card text-white bg-success mb-3" >
+            <div class="card-body">
+                <h5 class="card-title">¡Bien Hecho!</h5>
+                <p class="card-text" th:text="${exito}" ></p>
+                <a th:href="@{/editoriales}" class="btn btn-secondary">Ver Lista</a> 
+            </div>
+        </div>
+
+        <div th:if="${error}!=null" class="card text-white bg-danger mb-3" >
+            <div class="card-body">
+                <h5 class="card-title">¡ups!</h5>
+                <p class="card-text" th:text="${error}" ></p>
+            </div>
+        </div>
+            
+            <form th:action="@{/libros/nuevolibro/nuevaEditorial}" method="POST" >
+                <div class="form-grouuevaEditoriap col-md-6">
+                    <label for="inputPassword4">Nombre Editorial</label>
+                    <input type="text" class="form-control" id="inputPassword4" name="nombre" placeholder="Nombre de editorial">
+                </div>
+
+                <br>
+                <button   type="submit" class="btn btn-primary" >Agregar Editorial</button>
+            </form>
+
+    </body>
+</html>

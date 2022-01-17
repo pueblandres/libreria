@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head_1 :: head"> 
+    </head>
+
+    <body>
+        <nav th:replace="/fragments/nav :: nav"></nav>
+        <div class="jumbotron">
+            <h1 class="display-4">Librería   <a class="btn btn-primary btn-lg" th:href="@{/libros}" role="button"> VOLVER </a>  </h1>
+            <img id="fotoLibro" class="img-thumbnail rounded float-right"  th:src="${'/foto/libro/' + libro.id}" >
+            <p th:text="${libro.titulo}" class="lead"></p>
+            <hr class="my-4">
+
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">AÑO</th>
+                    <th scope="col">AUTOR</th>
+                    <th scope="col">EDITORIAL</th>
+                    <th scope="col">EJEMPLARES</th>
+                    <th scope="col">EJEMPLARES PRESTADOS</th>
+                    <th scope="col">EJEMPLARES RESTANTES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+
+                    <td  th:text="${libro.isbn}"></td>
+                    <td  th:text="${libro.anio}"></td>
+                    <td  th:text="${autor.nombre}"></td>
+                    <td  th:text="${editorial.nombre}"></td>
+                    <td  th:text="${libro.ejemplares}"></td> 
+                    <td  th:text="${libro.ejemplaresPrestados}"></td>
+                    <td  th:text="${libro.ejemplaresRestantes}"></td> 
+
+
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

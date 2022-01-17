@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+ <head th:replace="/fragments/head :: head"></head>
+
+<body>
+    
+  <nav th:replace="/fragments/nav :: nav"></nav>
+  <br>
+  <br>
+
+  <h1>LIBRERÍA</h1>
+  <br>
+
+
+
+
+  <a th:if="${usuario1}" class="btn btn-secondary btn-lg btn-block" th:href="@{/libros}" role="button">Libros</a>
+  <a th:if="${usuario1}" class="btn btn-secondary btn-lg btn-block" th:href="@{/autores}" role="button">Autores</a>
+  <a th:if="${usuario1}" class="btn btn-secondary btn-lg btn-block" th:href="@{/editoriales}" role="button">Editoriales</a>
+  <a th:if="${usuario1}" class="btn btn-secondary btn-lg btn-block" th:href="@{/usuarios}" role="button">Usuarios</a>
+  <a th:if="${usuario1}" class="btn btn-secondary btn-lg btn-block" th:href="@{/prestamos}" role="button">Prestamos</a>
+  <a  th:unless="${usuario1 != null}" class="btn btn-secondary btn-lg btn-block" th:href="@{/libros}" role="button">Buscar Por Libro</a>
+  <a  th:unless="${usuario1 != null}"class="btn btn-secondary btn-lg btn-block" th:href="@{/autores}" role="button">Buscar Por Autor</a>
+  <a  th:unless="${usuario1 != null}"class="btn btn-secondary btn-lg btn-block" th:href="@{/editoriales}" role="button">Buscar Por Editorial</a>
+
+
+</body>
+
+</html>

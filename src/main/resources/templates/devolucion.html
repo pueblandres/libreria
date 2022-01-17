@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Libreria </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+              integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+        <style>
+            .img{
+                width: auto;
+                height: auto;
+                max-width: 40px;
+                max-height: 40px;
+            }
+            .pos{
+                left: -170px;
+                top: 60px;
+            }
+            .img-centro{
+                width: auto;
+                height: auto;
+                max-width: 50px;
+                max-height: 50px;
+
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <nav th:replace="/fragments/nav :: nav"></nav>
+        <div class="jumbotron">
+            <h1 class="display-4">Mis Prestamos    </h1>
+
+            <hr class="my-4">
+
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th  scope="col">LIBRO</th>
+                    <th  scope="col">FECHA PRESTAMO</th>
+                    
+         
+        </tr>
+    </thead>
+    <tbody th:each="prestamo : ${prestamo}">
+        <tr>
+   
+            <td th:text="${prestamo.libro}"></td>
+            <td th:text="${prestamo.fechaprestamo}"></td>
+            <td>
+                <form th:action="@{/inicio/devolucion}"  method="POST">
+                    <input hidden th:value="${prestamo.id}" name="idPrestamo" >
+
+                    <button type="submit" class="btn btn-primary">Devolver Libro</button>
+                </form>
+            </td>
+
+
+        </tr>
+    </tbody>
+</table>
+</body>
+
+</html>

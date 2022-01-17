@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head th:replace="/fragments/headRegistro :: head"></head>
+
+<body class="container" >
+
+    
+    <div>
+        <div class="container">
+            <h1  class="display-4 ">Registro<a class="btn btn-primary btn-lg" th:href="@{/}" role="button">
+                    VOLVER </a></h1>
+        </div>
+
+    </div>
+
+
+    <form th:action="@{/registrarse}" method="POST" enctype="multipart/form-data" >
+
+        <p th:if= "${error!=null}" th:text="${error}" style="color: crimson"> </p>
+        <div class="form-group col-md-6">
+            <label>E-Mail</label>
+            <input th:value="${mail}" required type="text" class="form-control" id="inputPassword4" name="mail"
+                placeholder="E-Mail">
+        </div>
+
+
+        <div class="form-group col-md-6">
+            <label>Nombre</label>
+            <input th:value="${nombre}" required type="text" class="form-control" id="inputPassword4" name="nombre"
+                placeholder="nombre">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Apellido</label>
+            <input th:value="${apellido}" required type="text" class="form-control" id="inputPassword4" name="apellido"
+                placeholder="Apellido">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Foto</label>
+            <input th:value="${archivo}"  type="file" class="form-control" id="inputZip" name="archivo"
+                placeholder="Foto">
+        </div>
+
+        <div class="form-group col-md-2">
+            <label>D.N.I.</label>
+            <input th:value="${dni}" required type="text" class="form-control" id="inputZip" name="dni"
+                placeholder="D.N.I.">
+
+        </div>
+        <div class="form-group col-md-2">
+            <label>Telefono</label>
+            <input th:value="${telefono}" type="text" class="form-control" id="inputZip" name="telefono"
+                placeholder="Telefono">
+
+        </div>
+
+
+        <div class="form-group col-md-3">
+            <label>Clave</label>
+            <input th:value="${clave}" required type="password" class="form-control" id="inputZip" name="clave"
+                placeholder="clave">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Repetir Clave</label>
+            <input th:value="${clave2}" required type="password" class="form-control" id="inputZip" name="clave2"
+                placeholder="Repetir Clave">
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary"> Registrarme </button>
+    </form>
+
+</html>

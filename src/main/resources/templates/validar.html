@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ 
+    <head th:replace="/fragments/head_1 :: head">  </head>
+   
+  <body class="container" id="nuevoLibro">
+        
+
+        <div >
+            <div class="container">
+                <h1 class="display-4 ">Validar Mail <a class="btn btn-primary btn-lg" th:href="@{/autores}" role="button"> VOLVER </a></h1>
+            </div>
+
+            <form th:action="@{/validar}" method="POST" >
+                <div class="form-group col-md-6">
+                        <input hidden th:value="${usuario.mail}" name="mail" >
+                    <label>Numero Validación</label>
+                    <input type="number" class="form-control" id="inputPassword4" name="validar" placeholder="Numero">
+                </div>
+               
+
+                <br>
+                <button type="submit" class="btn btn-primary" >Validar</button>
+            </form>
+        </div>
+
+    </body>
+</html>

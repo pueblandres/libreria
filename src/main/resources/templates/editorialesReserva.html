@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head_1 :: head">  </head>
+
+    <body>
+        <nav th:replace="/fragments/nav :: nav"></nav>
+        <div  th:each="editorial : ${editorial}">
+            <div class="jumbotron">
+                <h1 class="display-4">Editorial
+                </h1>
+                   <hr class="my-4">
+
+               <p th:text="${editorial.nombre}" class="lead" style="font-size: 1.5cm"></p><a class="btn btn-primary btn-lg" th:href="@{editoriales/infoEditorial/__${editorial.id}__}" role="button"> Ver Libros De Esta Editorial</a>
+             
+
+            </div>
+        </div>
+
+</html>

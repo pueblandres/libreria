@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">LIBRERIA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    
+                    <a class="nav-link" th:href= "@{/inicio}">Inicio </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" >BUSCAR POR: </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/libros}">Libro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/autores}">Autor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/editoriales}">Editorial</a>
+                </li>
+            </ul>
+          </div>
+            <div class="conteiner">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            <img class="rounded-circle img "  th:src="${'/foto/usuario/' + session.usuariosession.id}" >
+                        </a>
+                        <div class="dropdown-menu pos text-center" aria-labelledby=" navbarDropdown">
+                            <br>
+                            <img class="rounded-circle img-centro rounded mx-auto d-block" th:src="${'/foto/usuario/' + session.usuariosession.id}" >
+                            <br>
+                            <p class="dropdown-item" th:text="${session.usuariosession.mail}"></p>
+                            <a th:if="${session.usuariosession.rol == 'USUARIO'}" class="dropdown-item" th:href="@{/inicio/devolucion/__${session.usuariosession.id}__}">Mis Prestamos</a>
+                            <a class="dropdown-item" th:href="@{/inicio/editar-perfil/__${session.usuariosession.id}__}">Editar Perfil</a>
+                            <div class="dropdown-divider"> </div>
+                            <a class="dropdown-item " th:href="@{/logout}">Salir</a>
+
+                        </div>
+
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

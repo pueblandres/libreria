@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="/fragments/head_1 :: head">  </head>
+    <body class="container" id="nuevoLibro">
+         <nav th:replace="/fragments/nav :: nav"></nav>
+
+        <div th:if="${exito}!=null" class="card text-white bg-success mb-3" >
+            <div class="card-body">
+                <h5 class="card-title">¡Bien Hecho!</h5>
+                <p class="card-text" th:text="${exito}" ></p>
+                <a th:href="@{/autores}" class="btn btn-secondary">Ver Lista</a> 
+            </div>
+        </div>
+
+        <div th:if="${error}!=null" class="card text-white bg-danger mb-3" >
+            <div class="card-body">
+                <h5 class="card-title">¡ups!</h5>
+                <p class="card-text" th:text="${error}" ></p>
+            </div>
+        </div>
+
+        <div >
+            <div class="container">
+                <h1 class="display-4 ">Nuevo Autor  <a class="btn btn-primary btn-lg" th:href="@{/autores}" role="button"> VOLVER </a></h1>
+            </div>
+
+            <form th:action="@{/autores/nuevoautor}" method="POST" >
+                <div class="form-group col-md-6">
+                    <label>Nombre Autor</label>
+                    <input type="text" class="form-control" id="inputPassword4" name="nombre" placeholder="Nombre del autor">
+                </div>
+               
+
+                <br>
+                <button type="submit" class="btn btn-primary" >Agregar Autor</button>
+            </form>
+        </div>
+
+    </body>
+</html>
